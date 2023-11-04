@@ -1,0 +1,9 @@
+apiVersion: core.easyaas.dev/v1
+kind: TerraformResource
+metadata:
+  name: ephemeralnamespaces
+  namespace: easyaas
+spec:
+  crd: ephemeralnamespaces.easyaas.dev
+  terraform:
+    source: github.com/nilscan/easyaas-resources//ephemeral-namespaces/terraform

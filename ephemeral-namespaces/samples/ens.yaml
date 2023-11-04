@@ -1,0 +1,7 @@
+apiVersion: easyaas.dev/v1
+kind: EphemeralNamespace
+metadata:
+  name: test-ens
+  namespace: easyaas-resources
+spec:
+  expiresAt: 2023-11-04T11:20:00NZT
