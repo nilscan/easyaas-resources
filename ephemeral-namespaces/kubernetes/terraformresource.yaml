@@ -7,3 +7,9 @@ spec:
   crd: ephemeralnamespaces.easyaas.dev
   terraform:
     source: github.com/nilscan/easyaas-resources//ephemeral-namespaces/terraform
+  controllers:
+    - name: ephemeralnamespaces-controller
+      source: controller/ephemeral-namespaces-controller.py
+  extraRoles:
+    - name: ephemeralnamespaces-job
+      kind: ClusterRole

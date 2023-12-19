@@ -6,24 +6,19 @@ spec:
   scope: Namespaced
   group: easyaas.dev
   names:
-    categories:
-      - easyaas
     kind: EphemeralNamespace
     plural: ephemeralnamespaces
     singular: ephemeralnamespace
     shortNames:
       - ens
+    categories:
+      - easyaas
 
   versions:
     - name: v1
       served: true
       storage: true
 
-      additionalPrinterColumns:
-        - name: Expires
-          type: string
-          description: Date and Time at which the namespace will be deleted
-          jsonPath: .spec.expiresAt
       schema:
         openAPIV3Schema:
           type: object
@@ -32,6 +27,8 @@ spec:
               type: object
               properties:
                 expiresAt:
+                  type: string
+                expiresIn:
                   type: string
             status:
               type: object
@@ -48,3 +45,9 @@ spec:
               x-kubernetes-preserve-unknown-fields: true
       subresources:
         status: {}
+
+      additionalPrinterColumns:
+        - name: Expires
+          type: string
+          description: Date and Time at which the namespace will be deleted
+          jsonPath: .spec.expiresAt

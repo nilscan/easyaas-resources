@@ -1,5 +1,5 @@
 locals {
-    annotations = merge(var.annotations, {
+    annotations = merge(var.metadataAnnotations, {
         "expires-at" = var.expiresAt
     })
 }
@@ -7,7 +7,7 @@ locals {
 resource kubernetes_namespace namespace {
   metadata {
     annotations = local.annotations
-    labels = var.labels
+    labels = var.metadataLabels
     name = var.metadataName
   }
 }

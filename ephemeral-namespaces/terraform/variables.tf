@@ -3,14 +3,14 @@ variable metadataName {
     type = string
 }
 
-variable annotations {
-    description = "Annotations to pass on to the underlying namespace's metadata"
+variable metadataAnnotations {
+    description = "Annotations to pass on to the underlying namespace's metadata. Comes from the kubernetes resource's metadata.annotations field"
     type = map(string)
     default = {}
 }
 
-variable labels {
-    description = "Labels to pass on to the underlying namespace's metadata"
+variable metadataLabels {
+    description = "Labels to pass on to the underlying namespace's metadata. Comes from the kubernetes resource's metadata.labels field"
     type = map(string)
     default = {}
 }
