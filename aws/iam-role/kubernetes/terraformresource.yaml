@@ -1,0 +1,10 @@
+apiVersion: core.easyaas.dev/v1
+kind: TerraformResource
+metadata:
+  name: iamrole
+  namespace: easyaas
+spec:
+  crd: iamrole.easyaas.dev
+  terraform:
+    source: github.com/nilscan/easyaas-resources//aws/iam-role/terraform
+  serviceAccount: iamrole-job

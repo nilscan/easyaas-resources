@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ssm-parameter-job
+  namespace: easyaas-resources
+  metadata:
+    annotations:
+      eks.amazonaws.com/role-arn: easyaas-ssmparameter-job
+---
+apiVersion: easyaas.dev/v1
+kind: IAMRole
+metadata:
+  name: easyaas-ssmparameter-job
+  namespace: easyaas-resources
+spec:
+  policy: |-
+    {
+      Version = "2012-10-17"
+      Statement = [
+        {
+          Action = [
+            "ssm:GetParameter",
+            "ssm:CreateParameter",
+            "ssm:UpdateParameter",
+            "ssm:DeleteParameter"
+          ]
+          Effect   = "Allow"
+          Resource = "*"
+        },
+      ]
+    }
+      
+  trustPolicy: |-
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Federated": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/oidc-id"
+          },
+          "Action": "sts:AssumeRoleWithWebIdentity",
+          "Condition": {
+            "StringEquals": {
+              "oidc.eks.us-east-1.amazonaws.com/id/oidc-id:aud": "sts.amazonaws.com"
+            }
+          }
+        }
+      ]
+    }

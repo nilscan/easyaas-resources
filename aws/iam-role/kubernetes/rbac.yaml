@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: iamrole-job
+  namespace: easyaas-resources
+  metadata:
+    annotations:
+      eks.amazonaws.com/role-arn: easyaas-iamrole-job

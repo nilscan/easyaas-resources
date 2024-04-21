@@ -1,0 +1,7 @@
+apiVersion: easyaas.dev/v1
+kind: SSMParameter
+metadata:
+  name: ssm-example
+  namespace: easyaas-resources
+spec:
+  value: foo

@@ -1,0 +1,10 @@
+apiVersion: core.easyaas.dev/v1
+kind: TerraformResource
+metadata:
+  name: ssmparameter
+  namespace: easyaas
+spec:
+  crd: ssmparameter.easyaas.dev
+  terraform:
+    source: github.com/nilscan/easyaas-resources//aws/ssm-parameter/terraform
+  serviceAccount: ssm-parameter-job
